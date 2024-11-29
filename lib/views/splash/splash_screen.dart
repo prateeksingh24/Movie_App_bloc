@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_bloc/config/routes/routes_name.dart';
+
+import 'package:movie_app_bloc/services/splash/splash_services.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,16 +10,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final SplashServices _splashServices = SplashServices();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _splashServices.isLogin(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, RoutesName.homeScreen);
-            },
-            child: const Text("Home")),
-      ),
+    return const Scaffold(
+      body: Center(child: Text("Splash Screen")),
     );
   }
 }
